@@ -54,6 +54,24 @@
          padding:7px 13px;font-size:13px;cursor:pointer;font-family:inherit}
   .ghost:hover{color:var(--txt);border-color:rgba(255,255,255,.3)}
 
+  /* ---------- בורר הימים ---------- */
+  .days{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 12px;margin-bottom:4px;
+        scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.18) transparent}
+  .days::-webkit-scrollbar{height:6px}
+  .days::-webkit-scrollbar-thumb{background:rgba(255,255,255,.16);border-radius:99px}
+  .day{flex:none;min-width:92px;border:1px solid var(--line);background:var(--card);border-radius:14px;
+       padding:9px 14px;cursor:pointer;font:inherit;text-align:center;transition:.18s;
+       backdrop-filter:blur(8px);position:relative}
+  .day b{display:block;font-size:14.5px;font-weight:600;color:var(--txt);line-height:1.35}
+  .day small{font-size:11.5px;color:var(--dimmer);font-variant-numeric:tabular-nums}
+  .day:hover:not(:disabled){background:var(--card-hi);border-color:rgba(255,255,255,.26);transform:translateY(-1px)}
+  .day.on{background:#fff;border-color:#fff}
+  .day.on b,.day.on small{color:#0d1020}
+  .day:disabled{opacity:.3;cursor:default}
+  .day.today::after{content:"";position:absolute;top:7px;inset-inline-end:8px;width:5px;height:5px;
+                    border-radius:99px;background:var(--live)}
+  .day.on.today::after{background:#0d1020}
+
   /* ---------- sections ---------- */
   .sec-head{display:flex;align-items:center;gap:12px;margin:34px 0 16px}
   .sec-head h2{font-size:20px;margin:0;white-space:nowrap}
@@ -137,6 +155,11 @@
   .pill.live{background:var(--live);color:#fff;box-shadow:0 3px 14px rgba(255,77,109,.45);animation:pulse 2s infinite}
   .pill.next{background:rgba(61,220,151,.16);color:var(--ok);border:1px solid rgba(61,220,151,.3)}
   .pill.done{background:rgba(255,255,255,.09);color:var(--dimmer)}
+  .pill.news{background:rgba(255,255,255,.08);color:var(--dimmer);border:1px solid var(--line);font-weight:600}
+  .news-note{width:100%;background:transparent;border:0;border-top:1px dashed rgba(255,255,255,.13);
+             color:var(--dimmer);font:inherit;font-size:11.5px;padding:9px 10px;cursor:pointer;
+             transition:.18s;text-align:center}
+  .news-note:hover{background:rgba(255,255,255,.05);color:var(--txt)}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
   .bar{height:3px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:9px}
   .bar i{display:block;height:100%;background:var(--live);border-radius:99px;transition:width .6s}
@@ -183,11 +206,13 @@
     <button class="ghost" id="refresh">רענון</button>
   </div>
 
+  <div class="days" id="days"></div>
+
   <div id="error"></div>
 
   <div class="sec-head">
     <h2>פריים טיים</h2>
-    <span class="badge" id="primeRange">21:00 – 23:00</span>
+    <span class="badge" id="primeRange">21:00 – 24:00</span>
     <div class="rule"></div>
   </div>
   <div class="grid" id="prime">
@@ -195,7 +220,7 @@
   </div>
 
   <div class="sec-head">
-    <h2>מכאן ועד חצות</h2>
+    <h2 id="restTitle">מכאן ועד חצות</h2>
     <span class="badge" id="restRange"></span>
     <div class="rule"></div>
   </div>
@@ -203,6 +228,9 @@
 
   <div class="note">
     הנתונים נמשכים בזמן אמת מלוח השידורים של yes · שעות לפי אזור הזמן <b>Asia/Jerusalem</b><br>
+    סינון החדשות חל על הפריים טיים בלבד, וזיהוי החדשות הוא לפי הכותרת — ל‑API אין שדה ז'אנר.
+    לכן כל כרטיס מציין כמה שידורים הוסתרו בו וניתן לחשוף אותם בלחיצה.
+    הלוח המלא שלמטה מציג תמיד הכל.<br>
     הדף מתרענן אוטומטית כל 5 דקות.
   </div>
 </div>
@@ -223,7 +251,7 @@ const CHANNELS = [
 
 const API = 'https://svc.yes.co.il/api/content/broadcast-schedule/channels/';
 const TZ  = 'Asia/Jerusalem';
-const PRIME_FROM = 21*60, PRIME_TO = 23*60;   // דקות מחצות
+const PRIME_FROM = 21*60, PRIME_TO = 24*60;   // דקות מחצות
 
 /* ===== עזרי זמן (תמיד לפי שעון ישראל, לא משנה איפה המחשב) ===== */
 const partsFmt = new Intl.DateTimeFormat('en-GB',{timeZone:TZ,year:'numeric',month:'2-digit',
@@ -245,6 +273,24 @@ function ilToDate(y,mo,d,h,mi){                // שעה ישראלית -> Date 
 }
 const hhmm = d => { const p=ilParts(d); return String(p.h).padStart(2,'0')+':'+String(p.mi).padStart(2,'0'); };
 
+/* ===== ימים ===== */
+const DAY_NAMES = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+const dayKey = o => `${o.y}-${o.mo}-${o.d}`;
+/* יום בשבוע של תאריך לוח – ללא תלות באזור הזמן של המחשב */
+const dowOf  = o => new Date(Date.UTC(o.y, o.mo-1, o.d)).getUTCDay();
+const shiftDay = (o, n) => { const t = new Date(Date.UTC(o.y, o.mo-1, o.d + n));
+  return {y:t.getUTCFullYear(), mo:t.getUTCMonth()+1, d:t.getUTCDate()}; };
+
+/* yes מגיש מהיום ועד סוף השבוע בלבד – ימים שעברו חוזרים ריקים */
+function weekDays(today){
+  const sunday = shiftDay(today, -dowOf(today));
+  return Array.from({length:7}, (_, i) => {
+    const o = shiftDay(sunday, i);
+    return {...o, name:DAY_NAMES[i], isToday:dayKey(o)===dayKey(today),
+            past: dowOf(o) < dowOf(today)};
+  });
+}
+
 /* ===== שליפה ===== */
 async function fetchChannel(ch, dateStr){
   const url = `${API}${ch.id}?date=${dateStr}&ignorePastItems=false`;
@@ -263,16 +309,24 @@ async function fetchChannel(ch, dateStr){
 /* ===== רינדור ===== */
 const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* מהדורות ומבזקי חדשות – מוסתרים כברירת מחדל */
-const NEWS_RX = /חדשות|מהדור[הת]|מבזק|כותרות הבוקר/;
-const isNews  = p => NEWS_RX.test(p.title);
+/* מהדורות ומבזקי חדשות – מוסתרים כברירת מחדל.
+   יוצא דופן: "חדשות הספורט" בערוצי הספורט נשאר מוצג. */
+const NEWS_RX  = /חדשות|מהדור[הת]|מבזק|כותרות הבוקר/;
+const SPORT_RX = /חדשות הספורט/;
+const isNews = (p, ch) => NEWS_RX.test(p.title) &&
+                          !(ch.group === 'sport' && SPORT_RX.test(p.title));
 
-let filter='all', showNews=false, state=[], todayEnd=null, primeStart=null, primeEnd=null;
+let filter='all', showNews=false, state=[], dayEnd=null, primeStart=null, primeEnd=null;
+/* היום המוצג כרגע (ברירת מחדל: היום) */
+let selDate = ilParts(new Date());
+const isToday = () => dayKey(selDate) === dayKey(ilParts(new Date()));
 /* מה פתוח כרגע – נשמר כדי שרענון התצוגה כל דקה לא יסגור מה שהמשתמש פתח */
 const openCards = new Set(), openDescs = new Set();
 /* איזו תוכנית נבחרה לספוטלייט בכל ערוץ (ברירת מחדל: הראשונה) */
 const spotlight = new Map();
-const noNews = arr => showNews ? arr : arr.filter(p => !isNews(p));
+/* ערוצים שבהם המשתמש ביקש לראות בכל זאת את מה שסונן כחדשות */
+const revealNews = new Set();
+const noNews = (arr, ch) => showNews ? arr : arr.filter(p => !isNews(p, ch));
 
 function statusOf(p, now){
   if(p.end <= now) return 'done';
@@ -300,6 +354,16 @@ function img(p, ch, cls){
 }
 
 const keyOf = (p, ch) => `${ch.num}-${p.start.getTime()}`;
+
+/* הסינון הוא ניחוש לפי כותרת – אז הוא תמיד מדווח על עצמו ואפשר לבטלו נקודתית */
+function newsNote(ch, hidden){
+  if(!hidden) return '';
+  const on = revealNews.has(String(ch.num));
+  return `<button class="news-note" data-ch="${ch.num}">${
+    on ? 'הסתר שוב את החדשות'
+       : `הוסתר${hidden>1?'ו':''} כאן ${hidden>1?hidden+' שידורי':'שידור'} חדשות · הצג`
+  }</button>`;
+}
 
 /* תקציר מקוצר ל‑2 שורות; כפתור "קרא עוד" מוצג רק אם הטקסט באמת נחתך */
 function descBlock(p, ch, hero){
@@ -336,6 +400,7 @@ function row(p, ch, now){
         <div class="t-row">
           <span class="time">${hhmm(p.start)} – ${hhmm(p.end)}</span>
           ${pill(st)}
+          ${isNews(p, ch) ? '<span class="pill news">חדשות</span>' : ''}
           <button class="spot" data-ch="${ch.num}" data-k="${keyOf(p, ch)}"
                   title="הצג תוכנית זו בראש הכרטיס">לספוטלייט ↑</button>
         </div>
@@ -351,18 +416,23 @@ function renderPrime(now){
   const list = state.filter(c => filter==='all' || c.ch.group===filter);
   let html='';
   for(const {ch, shows, error} of list){
-    const inPrime = noNews(shows.filter(p => p.start < primeEnd && p.end > primeStart));
+    const all    = shows.filter(p => p.start < primeEnd && p.end > primeStart);
+    const clean  = noNews(all, ch);
+    const hidden = all.length - clean.length;            // כמה סונן כאן בפועל
+    const shown  = revealNews.has(String(ch.num)) ? all : clean;
+    const base   = clean.length ? clean : all;           // הספוטלייט לעולם לא מהדורת חדשות
     let body;
     if(error){
       body = `<div class="empty">לא הצלחתי לטעון את הערוץ הזה</div>`;
-    }else if(!inPrime.length){
+    }else if(!shown.length){
       body = `<div class="empty">אין מידע על שידורים בשעות אלו</div>`;
     }else{
       const chosen = spotlight.get(String(ch.num));
-      let i = chosen ? inPrime.findIndex(p => keyOf(p, ch) === chosen) : 0;
+      let i = chosen ? base.findIndex(p => keyOf(p, ch) === chosen) : 0;
       if(i < 0) i = 0;                                   // הבחירה כבר לא בלוח – חזרה לראשונה
-      const others = inPrime.filter((_, j) => j !== i);  // השאר נשארים לפי סדר השעות
-      body = hero(inPrime[i], ch, now, i > 0);
+      const heroP  = base[i];
+      const others = shown.filter(p => p !== heroP);     // השאר נשארים לפי סדר השעות
+      body = hero(heroP, ch, now, i > 0);
       if(others.length){
         const label = others.length===1 ? 'עוד תוכנית אחת' : `עוד ${others.length} תוכניות`;
         body += `<div class="extra"><div class="extra-in">${others.map(p => row(p, ch, now)).join('')}</div></div>
@@ -375,8 +445,8 @@ function renderPrime(now){
       <div class="ch">
         <span class="num">${ch.num}</span>
         <span class="ch-name">${esc(ch.name)}</span>
-        <span class="ch-meta">${inPrime.length?inPrime.length+' שידורים':'—'}</span>
-      </div>${body}
+        <span class="ch-meta">${shown.length?shown.length+' שידורים':'—'}</span>
+      </div>${body}${newsNote(ch, hidden)}
     </article>`;
   }
   box.innerHTML = html || `<div class="empty">אין ערוצים לתצוגה</div>`;
@@ -408,7 +478,10 @@ function renderRest(now){
   const list = state.filter(c => filter==='all' || c.ch.group===filter);
   let html='';
   for(const {ch, shows, error} of list){
-    const upcoming = noNews(shows.filter(p => p.end > now && p.start.getTime() < todayEnd));
+    /* הלוח המלא – בלי סינון בכלל. ביום אחר: כל יום השידורים, לא רק "עד חצות". */
+    const upcoming = isToday()
+      ? shows.filter(p => p.end > now && p.start.getTime() < dayEnd)
+      : shows;
     const rows = upcoming.map(p=>{
       const live = p.start <= now && p.end > now;
       return `<div class="row ${live?'now':''}">
@@ -421,7 +494,7 @@ function renderRest(now){
       <div class="ch">
         <span class="num">${ch.num}</span>
         <span class="ch-name">${esc(ch.name)}</span>
-        <span class="ch-meta">${upcoming.length} עד חצות</span>
+        <span class="ch-meta">${upcoming.length} ${isToday()?'עד חצות':'שידורים'}</span>
       </div>
       ${error ? '<div class="empty">שגיאת טעינה</div>' : (rows || '<div class="empty">אין שידורים נוספים היום</div>')}
     </section>`;
@@ -433,20 +506,43 @@ function renderAll(){
   const now = new Date();
   renderPrime(now);
   renderRest(now);
-  document.getElementById('restRange').textContent = `${hhmm(now)} – 24:00`;
+  document.getElementById('restTitle').textContent = isToday() ? 'מכאן ועד חצות' : 'לוח מלא ליום הזה';
+  document.getElementById('restRange').textContent = isToday() ? `${hhmm(now)} – 24:00` : 'כל השידורים';
 }
+
+/* ===== בורר הימים ===== */
+function renderDays(){
+  const today = ilParts(new Date());
+  document.getElementById('days').innerHTML = weekDays(today).map(d=>`
+    <button class="day${dayKey(d)===dayKey(selDate)?' on':''}${d.isToday?' today':''}"
+            data-day="${dayKey(d)}" ${d.past?'disabled title="yes לא מגיש לוח לימים שעברו"':''}>
+      <b>${d.isToday?'היום':d.name}</b><small>${d.d}.${d.mo}</small>
+    </button>`).join('');
+}
+
+document.getElementById('days').addEventListener('click', e=>{
+  const btn = e.target.closest('.day');
+  if(!btn || btn.disabled || btn.classList.contains('on')) return;
+  const [y,mo,d] = btn.dataset.day.split('-').map(Number);
+  selDate = {y, mo, d};
+  openCards.clear(); openDescs.clear(); spotlight.clear(); revealNews.clear();
+  renderDays();
+  document.getElementById('prime').innerHTML = '<div class="skel"></div><div class="skel"></div><div class="skel"></div>';
+  document.getElementById('rest').innerHTML = '';
+  load();
+});
 
 /* ===== טעינה ===== */
 async function load(){
-  const now = new Date();
-  const p = ilParts(now);
+  const p = selDate;
   const dateStr = `${p.y}-${p.mo}-${p.d}`;
-  todayEnd   = ilToDate(p.y,p.mo,p.d+1,0,0).getTime();                  // חצות הלילה הקרוב
-  primeStart = ilToDate(p.y,p.mo,p.d, PRIME_FROM/60|0, PRIME_FROM%60);  // 21:00 היום
-  primeEnd   = ilToDate(p.y,p.mo,p.d, PRIME_TO/60|0,   PRIME_TO%60);    // 23:00 היום
+  dayEnd     = ilToDate(p.y,p.mo,p.d+1,0,0).getTime();                  // חצות בסוף היום הנבחר
+  primeStart = ilToDate(p.y,p.mo,p.d, PRIME_FROM/60|0, PRIME_FROM%60);  // 21:00 באותו יום
+  primeEnd   = ilToDate(p.y,p.mo,p.d, PRIME_TO/60|0,   PRIME_TO%60);    // חצות (24:00) באותו יום
 
   document.getElementById('subtitle').textContent =
-    new Intl.DateTimeFormat('he-IL',{timeZone:TZ,weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(now);
+    new Intl.DateTimeFormat('he-IL',{timeZone:TZ,weekday:'long',day:'numeric',month:'long',year:'numeric'})
+      .format(ilToDate(p.y,p.mo,p.d,12,0)) + (isToday() ? '' : ' · לוח עתידי');
 
   const results = await Promise.all(CHANNELS.map(async ch=>{
     try{ return {ch, shows: await fetchChannel(ch,dateStr)}; }
@@ -469,7 +565,19 @@ document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
   renderAll();
 }));
 /* פתיחה/סגירה – מטופל ישירות על ה‑DOM כדי שהאנימציה תרוץ ולא נאבד גלילה */
+/* "הוסתר כאן שידור חדשות · הצג" – זמין בשני המקטעים */
+function onNewsNote(e){
+  const note = e.target.closest('.news-note');
+  if(!note) return false;
+  const id = note.dataset.ch;
+  if(revealNews.has(id)) revealNews.delete(id);
+  else { revealNews.add(id); openCards.add(id); }   // שיהיה גלוי גם אם הכרטיס סגור
+  renderAll();
+  return true;
+}
+
 document.getElementById('prime').addEventListener('click', e=>{
+  if(onNewsNote(e)) return;
   const spot = e.target.closest('.spot');
   if(spot){
     spotlight.set(spot.dataset.ch, spot.dataset.k);
@@ -508,6 +616,7 @@ setInterval(()=>{ document.getElementById('clock').textContent = hhmm(new Date()
 document.getElementById('clock').textContent = hhmm(new Date());
 setInterval(()=>{ if(state.length) renderAll(); }, 60*1000);   // רענון תצוגה כל דקה
 setInterval(load, 5*60*1000);                                  // משיכת נתונים כל 5 דקות
+renderDays();
 load();
 </script>
 </body>
