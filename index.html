@@ -252,7 +252,9 @@ const CHANNELS = [
 
 const API = 'https://svc.yes.co.il/api/content/broadcast-schedule/channels/';
 const TZ  = 'Asia/Jerusalem';
-const PRIME_FROM = 21*60, PRIME_TO = 24*60;   // דקות מחצות
+const PRIME_FROM_MAIN  = 21*60;               // ערוצים 11·12·13 – 21:00
+const PRIME_FROM_SPORT = 18*60;               // ערוצי ספורט – 18:00
+const PRIME_TO = 24*60;                       // דקות מחצות
 
 /* ===== עזרי זמן (תמיד לפי שעון ישראל, לא משנה איפה המחשב) ===== */
 const partsFmt = new Intl.DateTimeFormat('en-GB',{timeZone:TZ,year:'numeric',month:'2-digit',
@@ -317,7 +319,7 @@ const SPORT_RX = /חדשות הספורט/;
 const isNews = (p, ch) => NEWS_RX.test(p.title) &&
                           !(ch.group === 'sport' && SPORT_RX.test(p.title));
 
-let filter='all', showNews=false, state=[], dayEnd=null, primeStart=null, primeEnd=null;
+let filter='all', showNews=false, state=[], dayEnd=null, primeStartMain=null, primeStartSport=null, primeEnd=null;
 /* היום המוצג כרגע (ברירת מחדל: היום) */
 let selDate = ilParts(new Date());
 const isToday = () => dayKey(selDate) === dayKey(ilParts(new Date()));
@@ -417,6 +419,7 @@ function renderPrime(now){
   const list = state.filter(c => filter==='all' || c.ch.group===filter);
   let html='';
   for(const {ch, shows, error} of list){
+    const primeStart = ch.group === 'sport' ? primeStartSport : primeStartMain;
     const all    = shows.filter(p => p.start < primeEnd && p.end > primeStart);
     const clean  = noNews(all, ch);
     const hidden = all.length - clean.length;            // כמה סונן כאן בפועל
@@ -503,10 +506,17 @@ function renderRest(now){
   box.innerHTML = html;
 }
 
+function primeRangeLabel(){
+  if(filter==='sport') return '18:00 – 24:00';
+  if(filter==='main')  return '21:00 – 24:00';
+  return '21:00 – 24:00 · ספורט מ‑18:00';
+}
+
 function renderAll(){
   const now = new Date();
   renderPrime(now);
   renderRest(now);
+  document.getElementById('primeRange').textContent = primeRangeLabel();
   document.getElementById('restTitle').textContent = isToday() ? 'מכאן ועד חצות' : 'לוח מלא ליום הזה';
   document.getElementById('restRange').textContent = isToday() ? `${hhmm(now)} – 24:00` : 'כל השידורים';
 }
@@ -537,9 +547,10 @@ document.getElementById('days').addEventListener('click', e=>{
 async function load(){
   const p = selDate;
   const dateStr = `${p.y}-${p.mo}-${p.d}`;
-  dayEnd     = ilToDate(p.y,p.mo,p.d+1,0,0).getTime();                  // חצות בסוף היום הנבחר
-  primeStart = ilToDate(p.y,p.mo,p.d, PRIME_FROM/60|0, PRIME_FROM%60);  // 21:00 באותו יום
-  primeEnd   = ilToDate(p.y,p.mo,p.d, PRIME_TO/60|0,   PRIME_TO%60);    // חצות (24:00) באותו יום
+  dayEnd          = ilToDate(p.y,p.mo,p.d+1,0,0).getTime();                                // חצות בסוף היום הנבחר
+  primeStartMain  = ilToDate(p.y,p.mo,p.d, PRIME_FROM_MAIN/60|0,  PRIME_FROM_MAIN%60);      // 21:00 באותו יום
+  primeStartSport = ilToDate(p.y,p.mo,p.d, PRIME_FROM_SPORT/60|0, PRIME_FROM_SPORT%60);     // 18:00 באותו יום
+  primeEnd        = ilToDate(p.y,p.mo,p.d, PRIME_TO/60|0,   PRIME_TO%60);                   // חצות (24:00) באותו יום
 
   document.getElementById('subtitle').textContent =
     new Intl.DateTimeFormat('he-IL',{timeZone:TZ,weekday:'long',day:'numeric',month:'long',year:'numeric'})
