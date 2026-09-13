@@ -20,13 +20,22 @@ self.addEventListener('activate', e => {
 });
 
 /* מטרת ה‑Service Worker היא רק לאפשר התקנה כאפליקציה ולוח ריק כשאין רשת –
-   נתוני השידורים עצמם תמיד נשלפים ישירות מה‑API של yes, בלי מטמון. */
+   נתוני השידורים עצמם תמיד נשלפים ישירות מה‑API של yes, בלי מטמון.
+   הגישה כאן היא "רשת קודם" – כל טעינה מנסה להביא גרסה טרייה מהשרת,
+   ורק אם אין רשת בכלל נופלים חזרה לעותק השמור מהפעם האחרונה.
+   כך אין צורך לעדכן ידנית מספר גרסה ב-sw.js כדי שעדכונים יתפסו. */
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if(url.origin !== location.origin){
     return; // בקשות ה‑API של yes תמיד יוצאות לרשת כרגיל
   }
   e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
+    fetch(e.request)
+      .then(res => {
+        const copy = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, copy));
+        return res;
+      })
+      .catch(() => caches.match(e.request))
   );
 });
