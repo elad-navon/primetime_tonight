@@ -1,0 +1,26 @@
+{
+  "name": "primetime-android",
+  "private": true,
+  "description": "The Android app for Prime Time: a Capacitor shell around the live website, with native reminders. The website itself (the repository root) stays a static site with no build step.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-reporter=spec \"tests/*.test.mjs\"",
+    "test:browser": "node tests/browser-check.mjs",
+    "build:native": "node scripts/build-native.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "android:debug": "node scripts/android-release.mjs --debug",
+    "android:release": "node scripts/android-release.mjs",
+    "android:dev": "node scripts/android-release.mjs --debug --dev-server=http://localhost:8099/",
+    "serve": "node tests/serve.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.5.3",
+    "@capacitor/core": "8.5.3",
+    "@capacitor/local-notifications": "8.3.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.3",
+    "@playwright/test": "1.63.0",
+    "esbuild": "0.28.2"
+  }
+}

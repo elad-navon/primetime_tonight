@@ -1,0 +1,771 @@
+{
+ "note": "Real responses of the yes schedule API (svc.yes.co.il/api/content/broadcast-schedule/channels/<id>?date=<d>&ignorePastItems=false), fetched 2026-10-17 from the live site in a browser. Key: \"<channel id> <date>\".",
+ "responses": {
+  "PT26 2026-10-17": {
+   "items": [
+    {
+     "id": 105055590,
+     "programId": 5139087,
+     "title": "ישיר! אפיק ישראל 2026",
+     "description": "שידור ישיר: אפיק ישראל. טור אופני הרים זוגי בינלאומי שנערך במשך 4 ימים. הרוכבים עוברים כ-100 קילומטרים מאתגרים ביום בנופים שונים ברחבי ישראל.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI80639.jpg",
+     "starts": "2026-10-17T04:45:00Z",
+     "ends": "2026-10-17T07:50:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055592,
+     "programId": 5139127,
+     "title": "והרי התחזית",
+     "description": "שידור חוזר: תכנית שמכינה אותך לכל המשחקים בסופ''ש, בישראל וגם קצת בעולם. מה התחזיות, מי יצטיין ומי יפתיע. עם רז זהבי, דודו אוואט וטל בן חיים.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI82400.jpg",
+     "starts": "2026-10-17T07:50:00Z",
+     "ends": "2026-10-17T08:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055594,
+     "programId": 5139128,
+     "title": "יש מצב בשישי",
+     "description": "שידור חוזר: כדורגל. רז זהבי ונדב צנציפר לקראת מחזור ליגת העל הקרוב.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI63895.JPG",
+     "starts": "2026-10-17T10:50:00Z",
+     "ends": "2026-10-17T11:55:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055598,
+     "programId": 5139129,
+     "title": "והרי התחזית",
+     "description": "שידור חוזר: תכנית שמכינה אותך לכל המשחקים בסופ''ש, בישראל וגם קצת בעולם. מה התחזיות, מי יצטיין ומי יפתיע. עם רז זהבי, דודו אוואט וטל בן חיים.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI82400.jpg",
+     "starts": "2026-10-17T14:05:00Z",
+     "ends": "2026-10-17T14:35:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055600,
+     "programId": 2660862,
+     "title": "ישיר! ליגת הנוער: מחזור 11",
+     "description": "שידור ישיר: כדורגל. ליגת העל לנוער, מחזור 11, שידור משולב: מכבי ת''א - הפ' פ''ת, הפ' חדרה - הפ' ת''א, מכבי נתניה - הפ' חיפה.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI57967.JPG",
+     "starts": "2026-10-17T16:00:00Z",
+     "ends": "2026-10-17T18:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055606,
+     "programId": 1977226,
+     "title": "ישיר! שער השבת",
+     "description": "שידור ישיר: כדורגל. הצטרפו לתכנית סיכום השבת עם שידור ראשון של תקצירי המשחקים, וכמובן דיווחים חיים וניתוחים מקצועיים. עם יהונתן כהן, איתי שכטר וטל בן חיים.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI46347.JPG",
+     "starts": "2026-10-17T18:30:00Z",
+     "ends": "2026-10-17T19:45:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055608,
+     "programId": 5139130,
+     "title": "ישיר! חדשות הספורט",
+     "description": "שידור ישיר: חדשות הספורט במהדורת שבת. כ' סמויות.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI76685.JPG",
+     "starts": "2026-10-17T19:45:00Z",
+     "ends": "2026-10-17T20:45:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055610,
+     "programId": 2633417,
+     "title": "שער השבת",
+     "description": "שידור חוזר: כדורגל. הצטרפו לתכנית סיכום השבת עם שידור ראשון של תקצירי המשחקים, וכמובן דיווחים חיים וניתוחים מקצועיים. עם יהונתן כהן, איתי שכטר וטל בן חיים.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI46346.JPG",
+     "starts": "2026-10-17T20:45:00Z",
+     "ends": "2026-10-17T22:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105124141,
+     "programId": 5156679,
+     "title": "ישיר! כדורסל אוסטרלי",
+     "description": "שידור ישיר: סידני נגד פרת', הליגה האוסטרלית בכדורסל, מחזור 5.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI75281.jpg",
+     "starts": "2026-10-17T08:30:00Z",
+     "ends": "2026-10-17T10:35:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105124143,
+     "programId": 1553456,
+     "title": "מנ. סיטי - פ.ס.ז'",
+     "description": "שידור חוזר: כדורגל. מנצ'סטר סיטי נגד פריס סן ז'רמן, ליגת האלופות, מחזור 2.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI92652.jpg",
+     "starts": "2026-10-17T10:35:00Z",
+     "ends": "2026-10-17T10:50:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105124145,
+     "programId": 5156680,
+     "title": "ישיר! נאנט - דנקרק",
+     "description": "שידור ישיר: כדורגל. נאנט נגד דנקרק, ליגה צרפתית שנייה, מחזור 9.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI75622.jpg",
+     "starts": "2026-10-17T11:55:00Z",
+     "ends": "2026-10-17T14:05:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105124147,
+     "programId": 5156681,
+     "title": "יש מצב בשישי",
+     "description": "שידור חוזר: כדורגל. רז זהבי ונדב צנציפר לקראת מחזור ליגת העל הקרוב.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI63895.JPG",
+     "starts": "2026-10-17T14:35:00Z",
+     "ends": "2026-10-17T15:40:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105124149,
+     "programId": 1553456,
+     "title": "מנ. סיטי - פ.ס.ז'",
+     "description": "שידור חוזר: כדורגל. מנצ'סטר סיטי נגד פריס סן ז'רמן, ליגת האלופות, מחזור 2.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI92652.jpg",
+     "starts": "2026-10-17T15:40:00Z",
+     "ends": "2026-10-17T16:00:00Z",
+     "channelId": "PT26"
+    }
+   ]
+  },
+  "PT26 2026-10-18": {
+   "items": [
+    {
+     "id": 105055612,
+     "programId": 5139131,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: חדשות הספורט במהדורת שבת.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-17T22:00:00Z",
+     "ends": "2026-10-17T23:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055614,
+     "programId": 2633417,
+     "title": "שער השבת",
+     "description": "שידור חוזר: כדורגל. הצטרפו לתכנית סיכום השבת עם שידור ראשון של תקצירי המשחקים, וכמובן דיווחים חיים וניתוחים מקצועיים. עם יהונתן כהן, איתי שכטר וטל בן חיים.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI46346.JPG",
+     "starts": "2026-10-17T23:00:00Z",
+     "ends": "2026-10-18T00:15:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055616,
+     "programId": 5139132,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: חדשות הספורט במהדורת שבת.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-18T00:15:00Z",
+     "ends": "2026-10-18T01:15:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105055618,
+     "programId": 2633417,
+     "title": "שער השבת",
+     "description": "שידור חוזר: כדורגל. הצטרפו לתכנית סיכום השבת עם שידור ראשון של תקצירי המשחקים, וכמובן דיווחים חיים וניתוחים מקצועיים. עם יהונתן כהן, איתי שכטר וטל בן חיים.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI46346.JPG",
+     "starts": "2026-10-18T01:15:00Z",
+     "ends": "2026-10-18T02:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110729,
+     "programId": 5153490,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: חדשות הספורט במהדורת שבת.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-18T03:30:00Z",
+     "ends": "2026-10-18T04:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110711,
+     "programId": 3181879,
+     "title": "ישיר! מ. ת''א - אל. קריית אתא",
+     "description": "שידור ישיר: כדורסל. מכבי תל אביב נגד אליצור קריית אתא, ליגת ווינר סל, מחזור 2.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI56307.JPG",
+     "starts": "2026-10-18T17:40:00Z",
+     "ends": "2026-10-18T20:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110713,
+     "programId": 5153482,
+     "title": "ישיר! חדשות הספורט",
+     "description": "שידור ישיר: מגזין חדשות ספורט יומי לסיכום אירועי היום. כ' סמויות.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI76685.JPG",
+     "starts": "2026-10-18T20:00:00Z",
+     "ends": "2026-10-18T20:50:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110715,
+     "programId": 5153483,
+     "title": "ישיר! יציע העיתונות",
+     "description": "שידור ישיר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI65282.JPG",
+     "starts": "2026-10-18T20:50:00Z",
+     "ends": "2026-10-18T21:40:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110701,
+     "programId": 4332409,
+     "title": "ישיר! חמש באוויר",
+     "description": "שידור ישיר: מהדורת צהריים חיה מחדר החדשות עם עדכוני ספורט שוטפים, ראיונות וניתוח האירועים החמים של היום.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI83189.JPG",
+     "starts": "2026-10-18T10:00:00Z",
+     "ends": "2026-10-18T11:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110703,
+     "programId": 5153478,
+     "title": "ישיר! חמש באוויר",
+     "description": "שידור ישיר: תכנית הרדיו של ערוץ הספורט, עם כל החדשות, הסיפורים והפרשנויות.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI73505.JPG",
+     "starts": "2026-10-18T11:00:00Z",
+     "ends": "2026-10-18T14:05:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110707,
+     "programId": 5153480,
+     "title": "ישיר! חדשות הספורט",
+     "description": "שידור ישיר: מגזין חדשות ספורט יומי לסיכום אירועי היום. כ' סמויות.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI76685.JPG",
+     "starts": "2026-10-18T16:00:00Z",
+     "ends": "2026-10-18T16:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110709,
+     "programId": 5153481,
+     "title": "ישיר! ה. ת''א - מ. אשדוד",
+     "description": "שידור ישיר: כדורסל. הפועל ת''א נגד מכבי אשדוד, ליגת ווינר סל, מחזור 2.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI56307.JPG",
+     "starts": "2026-10-18T16:30:00Z",
+     "ends": "2026-10-18T17:40:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110731,
+     "programId": 2633417,
+     "title": "שער השבת",
+     "description": "שידור חוזר: כדורגל. הצטרפו לתכנית סיכום השבת עם שידור ראשון של תקצירי המשחקים, וכמובן דיווחים חיים וניתוחים מקצועיים. עם יהונתן כהן, איתי שכטר וטל בן חיים.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI46346.JPG",
+     "starts": "2026-10-18T04:30:00Z",
+     "ends": "2026-10-18T05:50:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110733,
+     "programId": 5153491,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: חדשות הספורט במהדורת שבת.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-18T05:50:00Z",
+     "ends": "2026-10-18T06:50:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110735,
+     "programId": 2633417,
+     "title": "שער השבת",
+     "description": "שידור חוזר: כדורגל. הצטרפו לתכנית סיכום השבת עם שידור ראשון של תקצירי המשחקים, וכמובן דיווחים חיים וניתוחים מקצועיים. עם יהונתן כהן, איתי שכטר וטל בן חיים.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI46346.JPG",
+     "starts": "2026-10-18T06:50:00Z",
+     "ends": "2026-10-18T08:05:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110737,
+     "programId": 5153492,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: חדשות הספורט במהדורת שבת.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-18T08:05:00Z",
+     "ends": "2026-10-18T09:10:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110739,
+     "programId": 5153493,
+     "title": "בני סכנין - ה. פ''ת",
+     "description": "שידור חוזר: כדורגל. בני סכנין נגד הפועל פ''ת, ליגת ווינר, מחזור 7.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI91000.JPG",
+     "starts": "2026-10-18T09:10:00Z",
+     "ends": "2026-10-18T10:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105124151,
+     "programId": 5156682,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: חדשות הספורט במהדורת שבת.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-18T02:30:00Z",
+     "ends": "2026-10-18T03:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105124153,
+     "programId": 5153493,
+     "title": "בני סכנין - ה. פ''ת",
+     "description": "שידור חוזר: כדורגל. בני סכנין נגד הפועל פ''ת, ליגת ווינר, מחזור 7.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI91000.JPG",
+     "starts": "2026-10-18T14:05:00Z",
+     "ends": "2026-10-18T14:50:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105124155,
+     "programId": 5156683,
+     "title": "ה. חיפה - ה. ר''ג",
+     "description": "שידור חוזר: כדורגל. הפועל חיפה נגד הפועל רמת גן, ליגת ווינר, מחזור 7.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI91000.JPG",
+     "starts": "2026-10-18T14:50:00Z",
+     "ends": "2026-10-18T15:35:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105124157,
+     "programId": 4199959,
+     "title": "מגזין ליגת האלופות",
+     "description": "שידור חוזר: כדורגל. מגזין ליגת האלופות, עונת 2026/27: לסיכום מחזור 2 ולקראת מחזור 3.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI92652.jpg",
+     "starts": "2026-10-18T15:35:00Z",
+     "ends": "2026-10-18T16:00:00Z",
+     "channelId": "PT26"
+    }
+   ]
+  },
+  "PT26 2026-10-19": {
+   "items": [
+    {
+     "id": 105110717,
+     "programId": 5153484,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: מגזין חדשות ספורט יומי לסיכום אירועי היום.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-18T21:40:00Z",
+     "ends": "2026-10-18T22:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110719,
+     "programId": 5153485,
+     "title": "יציע העיתונות",
+     "description": "שידור חוזר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI65281.JPG",
+     "starts": "2026-10-18T22:30:00Z",
+     "ends": "2026-10-18T23:20:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110721,
+     "programId": 5153486,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: מגזין חדשות ספורט יומי לסיכום אירועי היום.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-18T23:20:00Z",
+     "ends": "2026-10-19T00:10:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110723,
+     "programId": 5153487,
+     "title": "יציע העיתונות",
+     "description": "שידור חוזר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI65281.JPG",
+     "starts": "2026-10-19T00:10:00Z",
+     "ends": "2026-10-19T01:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110725,
+     "programId": 5153488,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: מגזין חדשות ספורט יומי לסיכום אירועי היום.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-19T01:00:00Z",
+     "ends": "2026-10-19T01:50:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110727,
+     "programId": 5153489,
+     "title": "יציע העיתונות",
+     "description": "שידור חוזר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI65281.JPG",
+     "starts": "2026-10-19T01:50:00Z",
+     "ends": "2026-10-19T02:40:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110699,
+     "programId": 5153477,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: מגזין חדשות ספורט יומי לסיכום אירועי היום.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-19T02:40:00Z",
+     "ends": "2026-10-19T03:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110741,
+     "programId": 4199959,
+     "title": "מגזין ליגת האלופות",
+     "description": "שידור חוזר: כדורגל. מגזין ליגת האלופות, עונת 2026/27: לסיכום מחזור 2 ולקראת מחזור 3.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI92652.jpg",
+     "starts": "2026-10-19T15:30:00Z",
+     "ends": "2026-10-19T16:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110743,
+     "programId": 5153494,
+     "title": "ישיר! חדשות הספורט",
+     "description": "שידור ישיר: מגזין חדשות ספורט יומי לסיכום אירועי היום. כ' סמויות.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI76685.JPG",
+     "starts": "2026-10-19T16:00:00Z",
+     "ends": "2026-10-19T16:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110745,
+     "programId": 5153495,
+     "title": "ישיר! אולפן ליגת העל",
+     "description": "שידור ישיר: אולפן ליגת העל בכדורגל לקראת המשחק המרכזי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI87910.JPG",
+     "starts": "2026-10-19T16:30:00Z",
+     "ends": "2026-10-19T17:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110747,
+     "programId": 5153496,
+     "title": "ישיר! בית''ר י-ם - מ. ת''א",
+     "description": "שידור ישיר: כדורגל. בית''ר ירושלים נגד מכבי ת''א, ליגת ווינר, מחזור 7.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI91132.JPG",
+     "starts": "2026-10-19T17:30:00Z",
+     "ends": "2026-10-19T19:30:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110749,
+     "programId": 5153497,
+     "title": "ישיר! אחרי המשחק",
+     "description": "שידור ישיר: כדורגל. אולפן לסיכום המשחק המרכזי בליגת ווינר.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI84924.jpg",
+     "starts": "2026-10-19T19:30:00Z",
+     "ends": "2026-10-19T20:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110751,
+     "programId": 5153498,
+     "title": "ישיר! חדשות הספורט",
+     "description": "שידור ישיר: מגזין חדשות ספורט יומי לסיכום אירועי היום. כ' סמויות.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI76685.JPG",
+     "starts": "2026-10-19T20:00:00Z",
+     "ends": "2026-10-19T20:50:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110753,
+     "programId": 5153499,
+     "title": "ישיר! יציע העיתונות",
+     "description": "שידור ישיר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI55259.JPG",
+     "starts": "2026-10-19T20:50:00Z",
+     "ends": "2026-10-19T21:40:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110763,
+     "programId": 5153504,
+     "title": "יציע העיתונות",
+     "description": "שידור חוזר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI65281.JPG",
+     "starts": "2026-10-19T03:30:00Z",
+     "ends": "2026-10-19T04:25:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110765,
+     "programId": 5153505,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: מגזין חדשות ספורט יומי לסיכום אירועי היום.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-19T04:25:00Z",
+     "ends": "2026-10-19T05:15:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110767,
+     "programId": 5153506,
+     "title": "יציע העיתונות",
+     "description": "שידור חוזר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI65281.JPG",
+     "starts": "2026-10-19T05:15:00Z",
+     "ends": "2026-10-19T06:05:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110769,
+     "programId": 5153507,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: מגזין חדשות ספורט יומי לסיכום אירועי היום.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-19T06:05:00Z",
+     "ends": "2026-10-19T06:55:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110771,
+     "programId": 5153508,
+     "title": "יציע העיתונות",
+     "description": "שידור חוזר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI65281.JPG",
+     "starts": "2026-10-19T06:55:00Z",
+     "ends": "2026-10-19T07:45:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110773,
+     "programId": 5153509,
+     "title": "חדשות הספורט",
+     "description": "שידור חוזר: מגזין חדשות ספורט יומי לסיכום אירועי היום.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI43958.JPG",
+     "starts": "2026-10-19T07:45:00Z",
+     "ends": "2026-10-19T08:40:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110775,
+     "programId": 5153510,
+     "title": "יציע העיתונות",
+     "description": "שידור חוזר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI65281.JPG",
+     "starts": "2026-10-19T08:40:00Z",
+     "ends": "2026-10-19T09:35:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110777,
+     "programId": 4199959,
+     "title": "מגזין ליגת האלופות",
+     "description": "שידור חוזר: כדורגל. מגזין ליגת האלופות, עונת 2026/27: לסיכום מחזור 2 ולקראת מחזור 3.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI92652.jpg",
+     "starts": "2026-10-19T09:35:00Z",
+     "ends": "2026-10-19T10:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110779,
+     "programId": 4332409,
+     "title": "ישיר! חמש באוויר",
+     "description": "שידור ישיר: מהדורת צהריים חיה מחדר החדשות עם עדכוני ספורט שוטפים, ראיונות וניתוח האירועים החמים של היום.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI83189.JPG",
+     "starts": "2026-10-19T10:00:00Z",
+     "ends": "2026-10-19T11:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110781,
+     "programId": 5153511,
+     "title": "ישיר! חמש באוויר",
+     "description": "שידור ישיר: תכנית הרדיו של ערוץ הספורט, עם כל החדשות, הסיפורים והפרשנויות.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI73505.JPG",
+     "starts": "2026-10-19T11:00:00Z",
+     "ends": "2026-10-19T14:05:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110783,
+     "programId": 5153512,
+     "title": "יציע העיתונות",
+     "description": "שידור חוזר: סיכום אירועי היום בספורט הישראלי והעולמי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI65281.JPG",
+     "starts": "2026-10-19T14:05:00Z",
+     "ends": "2026-10-19T15:00:00Z",
+     "channelId": "PT26"
+    },
+    {
+     "id": 105110785,
+     "programId": 5022420,
+     "title": "האקסטרים הטהור",
+     "description": "שידור חוזר: הצצה לעולם של ספורט אקסטרים והרפתקאות בחיק הטבע כאלטרנטיבה מרגיעה ומלהיבה לקצב החיים האורבני האינטנסיבי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI89950.jpg",
+     "starts": "2026-10-19T15:00:00Z",
+     "ends": "2026-10-19T15:30:00Z",
+     "channelId": "PT26"
+    }
+   ]
+  },
+  "CH34 2026-10-17": {
+   "items": [
+    {
+     "id": 105056079,
+     "programId": 5139327,
+     "title": "פרספקטיבה",
+     "description": "מגזין שבועי בהנחיית אליאס עבוד. תוכנית אירוח וראיונות טלוויזיונית בשפה הערבית. אורחים מרקעים מגוונים, ובעלי תחומי עניין רחבים דנים בנושאים אישיים וציבוריים. כ' עב', כ' ער'.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI69531.JPG",
+     "starts": "2026-10-17T03:00:00Z",
+     "ends": "2026-10-17T04:00:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105056082,
+     "programId": 5139328,
+     "title": "בא לי לדעת",
+     "description": "מגזין טלוויזיוני שבועי חדש לילדים: מדע וטכנולוגיה, תגליות חדשות, תרבות, ספורט, בעלי חיים ועוד. כ' עב'.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI90508.jpg",
+     "starts": "2026-10-17T04:00:00Z",
+     "ends": "2026-10-17T04:25:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105056103,
+     "programId": 5139332,
+     "title": "סדר עולמי",
+     "description": "ערד ניר עם מגזין חדשות החוץ השבועי. התכנית שעושה סדר בענייני העולם מזווית מקומית ומסתכלת על ישראל מזווית עולמית. כ' סמ'/עב'. שידור חי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI87299.JPG",
+     "starts": "2026-10-17T12:00:00Z",
+     "ends": "2026-10-17T14:00:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105056106,
+     "programId": 5139333,
+     "title": "שבת בחמש",
+     "description": "גדעון אוקו עם כל הכותרות הריאיונות וסיפורי סוף השבוע. כ' סמ'. שידור חי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI85819.JPG",
+     "starts": "2026-10-17T14:00:00Z",
+     "ends": "2026-10-17T15:00:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105056109,
+     "programId": 5139334,
+     "title": "פגוש את העיתונות החדשה",
+     "description": "עמית סגל ובן כספית פוגשים את האנשים שעושים את הפוליטיקה הישראלית. כ' סמ'. כ' עב'. שידור חי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI85820.JPG",
+     "starts": "2026-10-17T15:00:00Z",
+     "ends": "2026-10-17T16:50:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105056112,
+     "programId": 5125336,
+     "title": "חדשות סוף השבוע עם דנה ויס",
+     "description": "דנה ויס מגישה לכם את סיכום חדשות השבת, ואת כתבות המגזין על הנושאים שנוגעים לחיים של כל אחד ואחת מאיתנו. כ' סמ'. שידור חי.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI91650.jpg",
+     "starts": "2026-10-17T16:50:00Z",
+     "ends": "2026-10-17T18:30:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105056121,
+     "programId": 5139335,
+     "title": "אברי ושרקי",
+     "description": "אברי גלעד ויאיר שרקי בתכנית מיוחדת על כל אירועי היום בארץ ובעולם עם הפרשנים, הכתבים והאורחים המעניינים. כ' סמ'/עב'.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI89279.JPG",
+     "starts": "2026-10-17T20:22:00Z",
+     "ends": "2026-10-17T20:50:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105085559,
+     "programId": 5147866,
+     "title": "גלית ואילנית",
+     "description": "גלית ואילנית מקבלות את הסופ''ש: האם סתיו נפתלי ואמה רייצ'ל בדרך לגמר המטבח המנצח VIP? וצדי צרפתי עם כל מה שצריך לדעת לקראת העונה החדשה של הזמר במסכה והאם יזהה את האורח המפתיע במסכה באולפן? כ' סמ'/עב'. ש.ח.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI89297.JPG",
+     "starts": "2026-10-17T04:55:00Z",
+     "ends": "2026-10-17T06:25:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105085562,
+     "programId": 5147867,
+     "title": "אופירה אוחנה סרי",
+     "description": "אופירה, אוחנה וסרי בספיישל בחירות ענק לקראת השבוע האחרון והגורלי. גדי איזנקוט, נפתלי בנט ויאיר גולן - כולם מגיעים לאולפן. וגם: בר רפאלי מול אופירה אחת על אחת. כ' סמ'/עב'. ש.ח.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI89287.JPG",
+     "starts": "2026-10-17T06:25:00Z",
+     "ends": "2026-10-17T08:30:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105085565,
+     "programId": 5147868,
+     "title": "אוחנה וסרי פוגשים את ישראל",
+     "description": "אלי אוחנה וברק סרי מגיעים לשדרות 3 שנים אחרי 7.10 לסיור אוכל ב''מחנה יהודה'' של שדרות. האם הם ספרו מנדטים או קלוריות? כ' עב'.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI90611.jpg",
+     "starts": "2026-10-17T08:30:00Z",
+     "ends": "2026-10-17T09:00:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105085574,
+     "programId": 5147864,
+     "title": "ארץ נהדרת - תוכנית פתיחת העונה",
+     "description": "ארץ נהדרת פותחת עונה עם העימות שיכול לקרות רק בארץ נהדרת - איזנקוט נגד נתניהו. וגם: מלי וליאל שחזרו להצביע, ופאודה מציגה: ליאור רז השרברב על טיסת פליי דובאי. כ' עב'. ש.ח.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI92837.png",
+     "starts": "2026-10-17T10:35:00Z",
+     "ends": "2026-10-17T12:00:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105085577,
+     "programId": 5147870,
+     "title": "הזמר במסכה - תכנית הבכורה",
+     "description": "הזמר במסכה חוזרת לגמרי אחרת! ולא תאמינו מי המפורסמת שתיחשף רק לצופים אבל לא לשופטים. וגם תתכוננו לחשיפה נוספת מטורפת. שתי חשיפות בערב אחד. כ' עב'.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI92977.png",
+     "starts": "2026-10-17T18:30:00Z",
+     "ends": "2026-10-17T20:22:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105085580,
+     "programId": 5147871,
+     "title": "תשדירי תעמולה לבחירות לכנסת ה-26",
+     "description": "תשדירי התעמולה לרשימות המתמודדות לבחירות לכנסת ה-26. כ' עב'.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI92861.jpg",
+     "starts": "2026-10-17T20:50:00Z",
+     "ends": "2026-10-17T21:25:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105093982,
+     "programId": 5150519,
+     "title": "המטבח המנצח VIP - הארוחה של אברי שהסתבכה",
+     "description": "אברי גלעד מתכנן ארוחת פאר עם מנה רשמית של הבית הלבן, אבל מה שמתחיל בחגיגה הופך למהומה. מה הצית את חיים וגיה? חיים כהן כמו שלא שמעתם מעולם. וגם, הטקס המפתיע של אברי ואילון שהסעיר את כולם. כ' עב'. ת.פ. ש.ח.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI92672.jpg",
+     "starts": "2026-10-17T09:00:00Z",
+     "ends": "2026-10-17T10:35:00Z",
+     "channelId": "CH34"
+    },
+    {
+     "id": 105122542,
+     "programId": 5153053,
+     "title": "חדשות האוכל",
+     "description": "חדשות האוכל בהגשת ריטה גולדשטיין. מגזין טלוויזיה צעיר, דינמי ועדכני הסוקר את עולם האוכל, הקולינריה והטרנדים הכי חמים. והפעם: דג בקונפי עגבניות של אבי לוי, התפוח הסיני והמלצת מסעדה בחיפה. כ' עב'. ת.פ. ש.ח.",
+     "imageUrl": "https://fykswkmjb.filerobot.com/extch/SI80193.JPG",
+     "starts": "2026-10-17T04:25:00Z",
+     "ends": "2026-10-17T04:55:00Z",
+     "channelId": "CH34"
+    }
+   ]
+  }
+ }
+}
