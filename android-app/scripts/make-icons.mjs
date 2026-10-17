@@ -1,4 +1,4 @@
-// Every Prime Time icon from one drawing: a bookmark outline in white, on a transparent background.
+// Every Prime Time icon from one drawing: a filled bookmark with a star cut out, on a transparent background.
 // Rendered with the browser Playwright installs (no image library).
 //
 //   npm run icons        (from android-app/)
@@ -8,8 +8,8 @@
 //    icon on purpose, see the README), icons/apple-touch-icon.png (white on the site's #0a0d16: iOS turns
 //    transparent pixels black anyway), icons/favicon.svg (the browser tab: white on a dark tab, #0a0d16 on a
 //    light one) and icons/favicon-32.png (white on a dark square, for browsers without SVG icons);
-//  - the Android app (android/app/src/main/res): the launcher icon (white, transparent background, as large
-//    as a launcher shows safely), the launch screens (white on #0a0d16) and the small status-bar icon of the
+//  - the Android app (android/app/src/main/res): the launcher icon (blue, transparent background, the same
+//    size as the grocery and diet apps' icons), the launch screens (white on #0a0d16) and the small status-bar icon of the
 //    reminders (ic_stat_pt, white - Android tints it).
 // After changing the icons, raise ?v= in index.html and manifest.json (see the README).
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
@@ -22,10 +22,21 @@ const SITE = join(HERE, '..', '..');
 const RES = join(HERE, '..', 'android', 'app', 'src', 'main', 'res');
 const DARK = '#0a0d16';
 const WHITE = '#ffffff';
+// The launcher icon's color: launcher icon packs often put icons on a white tile, where a white bookmark
+// disappears; blue shows on white and dark alike.
+const BLUE = '#3b82f6';
 
-/** The bookmark on a 64-unit grid; BOX frames just the drawing, stroke included. */
-const glyph = (color) =>
-  `<path d="M18 9.5h28a2 2 0 0 1 2 2V55l-16-11.5L16 55V11.5a2 2 0 0 1 2-2z" fill="none" stroke="${color}" stroke-width="3.8" stroke-linejoin="round"/>`;
+/**
+ * A filled bookmark on a 64-unit grid with a star cut out of it (a mask), so whatever is behind the icon
+ * shows through the star; BOX frames just the drawing, stroke included.
+ */
+const glyph = (color) => `<defs>
+    <mask id="star" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect width="64" height="64" fill="#fff"/>
+      <path d="M32 17.5l3.1 6.3 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3 1.2-6.9-5-4.9 6.9-1z" fill="#000"/>
+    </mask>
+  </defs>
+  <path class="bookmark" d="M18 9.5h28a2 2 0 0 1 2 2V55l-16-11.5L16 55V11.5a2 2 0 0 1 2-2z" fill="${color}" stroke="${color}" stroke-width="3.8" stroke-linejoin="round" mask="url(#star)"/>`;
 const BOX = { x: 14, y: 7.5, w: 36, h: 49.5 };
 
 /** width x height, the drawing centred at `size` x the shorter side tall; background: none, 'full' or 'rounded'. */
@@ -53,8 +64,8 @@ png(join(SITE, 'icons', 'apple-touch-icon.png'), { width: 180, size: 0.62, backg
 png(join(SITE, 'icons', 'favicon-32.png'), { width: 32, size: 0.78, background: 'rounded' });
 const favicon = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="${BOX.x - 7.25} ${BOX.y} ${BOX.h} ${BOX.h}">
   <style>
-    path { stroke: ${DARK}; }
-    @media (prefers-color-scheme: dark) { path { stroke: ${WHITE}; } }
+    .bookmark { fill: ${DARK}; stroke: ${DARK}; }
+    @media (prefers-color-scheme: dark) { .bookmark { fill: ${WHITE}; stroke: ${WHITE}; } }
   </style>
   ${glyph(DARK)}
 </svg>
@@ -65,11 +76,12 @@ if (existsSync(RES)) {
   for (const [density, scale] of Object.entries({ mdpi: 1, hdpi: 1.5, xhdpi: 2, xxhdpi: 3, xxxhdpi: 4 })) {
     // The Android 12+ launch-screen icon (the drawing alone on the 108dp canvas).
     png(join(RES, `mipmap-${density}`, 'ic_launcher_foreground.png'), { width: 108 * scale, size: 0.6 });
-    // The launcher icon: the drawing alone, transparent. There is deliberately no adaptive icon
+    // The launcher icon: the drawing alone, in blue, transparent. There is deliberately no adaptive icon
     // (mipmap-anydpi-v26): launcher icon packs draw their own tile and a dark halo behind adaptive
-    // icons they don't know, and leave a plain transparent icon as it is.
-    png(join(RES, `mipmap-${density}`, 'ic_launcher.png'), { width: 48 * scale, size: 0.88 });
-    png(join(RES, `mipmap-${density}`, 'ic_launcher_round.png'), { width: 48 * scale, size: 0.84 });
+    // icons they don't know, and leave a plain transparent icon as it is. At 0.88 the tall bookmark ran
+    // out of the packs' frames; 0.64 sits inside them like the grocery and diet icons.
+    png(join(RES, `mipmap-${density}`, 'ic_launcher.png'), { width: 48 * scale, size: 0.64, color: BLUE });
+    png(join(RES, `mipmap-${density}`, 'ic_launcher_round.png'), { width: 48 * scale, size: 0.64, color: BLUE });
     // The reminders' status-bar icon (24dp, white; Android draws it in the system colour).
     png(join(RES, `drawable-${density}`, 'ic_stat_pt.png'), { width: 24 * scale, size: 0.86 });
   }
