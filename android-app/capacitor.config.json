@@ -1,0 +1,15 @@
+{
+  "appId": "com.eladnavon.primetime",
+  "appName": "פריים טיים",
+  "webDir": "android-shell",
+  "server": {
+    "url": "https://elad-navon.github.io/primetime_tonight/",
+    "errorPath": "index.html"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_pt",
+      "iconColor": "#0a0d16"
+    }
+  }
+}

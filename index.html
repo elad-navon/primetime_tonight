@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACMUlEQVR4nO2XsW4TQRCG/5lbXww4EhUUIAo38AY4CZJBoqV0hyiA1kg8wclPQJOWEDASkJS0EcaIAokXIAW+AiRERYHjnM+7M2jPCTEoOD6j4AL/zZ288//zee5O2gVmLPrjShRx+UbnvDELQZIkU4UXi0VY23edl+XPaDRkMgAFgaAX395eHLD9QAGfVSs6FvZwKRkmdfK1IObS9pW17/vZo0VmbAJgiCjIepPmbQ9Q1m1sDzNukQCBqAKqGX0+AoUoZRnTAmA4suHQ/DVX/z3PEeCMGYvnAJgDzFg8B8AcYMbiOQD+dwAztdNvUfymIxMN9w3/DEBVwMRULGRNNXGAiICIjx1AVR2HJgBDZdfViVUoDFYhzJJaN9xDHhOAqtqgFBpN5Yuk9la80tzyv5ff3dxGUHgSlMJzrptaIpo4lydtDYUzp4tGBu6N9m0lXm5uoRWZaisyncrTV9TrLUkqr32Nrz14P8bLTNDbP1viUshux652evF9XGtbaC0ANWw7q6kFH+nFJ2zUrpcvnHrAi2Fduqlm3r+ZgAIDKhqmMEjczuBu5/KjOq62HTRi0Kb7Wejvo4hR25ROZf2e6/bvUMiJ9/qMqQAWSqmnP6NOYkm1Gi8/fohWdTgxOuSYtX/0alVNvNJckxRV7/UZe1n5ABJ78gSBnsu33aV4Zf191tyP/rej1S/ya76mFRnv8V4wPfNZyC2tHXxOGyP3k2rUM5qVD8L/J3/Im1Lee4T/B6Vi/SPd2LW5AAAAAElFTkSuQmCC">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=5">
-<link rel="manifest" href="manifest.json?v=5">
+<link rel="icon" type="image/svg+xml" href="icons/favicon.svg?v=6">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png?v=6">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=6">
+<link rel="manifest" href="manifest.json?v=6">
 <meta name="theme-color" content="#0a0d16">
 <title>מה יש בפריים טיים?</title>
 <style>
@@ -304,6 +305,7 @@ async function fetchChannel(ch, dateStr){
   if(!res.ok) throw new Error(ch.name+': HTTP '+res.status);
   const data = await res.json();
   return (data.items||[]).map(it=>({
+    id:    it.id,                       // מזהה השידור של yes (משמש את התזכורות באפליקציה)
     title: it.title || 'ללא שם',
     desc:  it.description || '',
     img:   it.imageUrl || '',
@@ -385,7 +387,7 @@ function hero(p, ch, now, moved){
   const st = statusOf(p, now);
   const tag = st!=='next' ? `<span class="tag">${pill(st)}</span>`
             : moved      ? `<span class="tag spotted pill">בספוטלייט</span>` : '';
-  return `<div class="hero">
+  return `<div class="hero" data-k="${keyOf(p, ch)}">
       ${img(p, ch, 'hero')}
       <div class="scrim"></div>
       ${tag}
@@ -400,7 +402,7 @@ function hero(p, ch, now, moved){
 
 function row(p, ch, now){
   const st = statusOf(p, now);
-  return `<div class="show ${st==='done'?'done':''}">
+  return `<div class="show ${st==='done'?'done':''}" data-k="${keyOf(p, ch)}">
       ${img(p, ch, 'thumb')}
       <div class="info">
         <div class="t-row">
@@ -491,7 +493,7 @@ function renderRest(now){
       : shows;
     const rows = upcoming.map(p=>{
       const live = p.start <= now && p.end > now;
-      return `<div class="row ${live?'now':''}">
+      return `<div class="row ${live?'now':''}" data-k="${keyOf(p, ch)}">
         <span class="time">${hhmm(p.start)}</span>
         <span class="nm">${esc(p.title)}</span>
         ${live?'<span class="pill live">עכשיו</span>':''}
@@ -522,6 +524,7 @@ function renderAll(){
   document.getElementById('primeRange').textContent = primeRangeLabel();
   document.getElementById('restTitle').textContent = isToday() ? 'מכאן ועד חצות' : 'לוח מלא ליום הזה';
   document.getElementById('restRange').textContent = isToday() ? `${hhmm(now)} – 24:00` : 'כל השידורים';
+  window.dispatchEvent(new Event('pt:rendered'));   // לאפליקציה: לסמן את פעמוני התזכורות מחדש
 }
 
 /* ===== בורר הימים ===== */
@@ -638,6 +641,27 @@ load();
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
 }
+
+/* ===== אפליקציית האנדרואיד: תזכורות לשידורים =====
+   נטען רק בתוך האפליקציה (Capacitor), אף פעם לא בדפדפן – ראו native/app.js ו-android-app/README.md.
+   מה שהקוד שם צריך מהדף חשוף כאן. */
+window.ptApp = {
+  channels: CHANNELS, fetchChannel, ilParts, shiftDay, dayKey, hhmm,
+  selectedDayKey: () => dayKey(selDate),
+  programByKey(k){
+    for(const {ch, shows} of state) for(const p of shows) if(keyOf(p, ch) === k) return {p, ch};
+    return null;
+  },
+};
+let nativeLoaded = false;
+function loadNative(){
+  const cap = window.Capacitor;
+  if(nativeLoaded || !cap || typeof cap.isNativePlatform !== 'function' || !cap.isNativePlatform()) return;
+  nativeLoaded = true;
+  import('./native/app.js').catch(e => console.error('reminders', e));
+}
+loadNative();
+window.addEventListener('load', loadNative);   // אם Capacitor נטען אחרי הסקריפט הזה
 </script>
 </body>
 </html>
