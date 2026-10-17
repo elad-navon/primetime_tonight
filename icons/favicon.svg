@@ -1,7 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="6.75 7.5 49.5 49.5">
   <style>
-    path { stroke: #0a0d16; }
-    @media (prefers-color-scheme: dark) { path { stroke: #ffffff; } }
+    .bookmark { fill: #0a0d16; stroke: #0a0d16; }
+    @media (prefers-color-scheme: dark) { .bookmark { fill: #ffffff; stroke: #ffffff; } }
   </style>
-  <path d="M18 9.5h28a2 2 0 0 1 2 2V55l-16-11.5L16 55V11.5a2 2 0 0 1 2-2z" fill="none" stroke="#0a0d16" stroke-width="3.8" stroke-linejoin="round"/>
+  <defs>
+    <mask id="star" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect width="64" height="64" fill="#fff"/>
+      <path d="M32 17.5l3.1 6.3 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3 1.2-6.9-5-4.9 6.9-1z" fill="#000"/>
+    </mask>
+  </defs>
+  <path class="bookmark" d="M18 9.5h28a2 2 0 0 1 2 2V55l-16-11.5L16 55V11.5a2 2 0 0 1 2-2z" fill="#0a0d16" stroke="#0a0d16" stroke-width="3.8" stroke-linejoin="round" mask="url(#star)"/>
 </svg>
