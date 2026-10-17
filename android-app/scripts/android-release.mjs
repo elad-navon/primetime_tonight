@@ -125,9 +125,11 @@ if (!debug) {
   run('npm', ['run', 'test:browser']);
   step('The bundled plugin API is up to date');
   const vendor = join(ROOT, '..', 'native', 'vendor', 'capacitor.js');
-  const before = readFileSync(vendor, 'utf8');
+  // Compared without line endings: Git on Windows checks the file out with CRLF, esbuild writes LF.
+  const text = () => readFileSync(vendor, 'utf8').replace(/\r\n/g, '\n');
+  const before = text();
   run('npm', ['run', 'build:native']);
-  if (readFileSync(vendor, 'utf8') !== before) {
+  if (text() !== before) {
     fail('native/vendor/capacitor.js was out of date and has been rebuilt - commit it, then build again.');
   }
 }

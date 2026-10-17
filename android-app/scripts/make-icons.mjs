@@ -63,9 +63,11 @@ const favicon = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" 
 // Android app
 if (existsSync(RES)) {
   for (const [density, scale] of Object.entries({ mdpi: 1, hdpi: 1.5, xhdpi: 2, xxhdpi: 3, xxxhdpi: 4 })) {
-    // Adaptive (Android 8+): the drawing alone on the 108dp canvas over a transparent background.
+    // The Android 12+ launch-screen icon (the drawing alone on the 108dp canvas).
     png(join(RES, `mipmap-${density}`, 'ic_launcher_foreground.png'), { width: 108 * scale, size: 0.6 });
-    // Older launchers: the drawing alone.
+    // The launcher icon: the drawing alone, transparent. There is deliberately no adaptive icon
+    // (mipmap-anydpi-v26): launcher icon packs draw their own tile and a dark halo behind adaptive
+    // icons they don't know, and leave a plain transparent icon as it is.
     png(join(RES, `mipmap-${density}`, 'ic_launcher.png'), { width: 48 * scale, size: 0.88 });
     png(join(RES, `mipmap-${density}`, 'ic_launcher_round.png'), { width: 48 * scale, size: 0.84 });
     // The reminders' status-bar icon (24dp, white; Android draws it in the system colour).
